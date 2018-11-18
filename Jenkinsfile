@@ -11,8 +11,9 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
  environment {
-    PATH = "C:\\Program Files\\Git\\bin;${env.PATH}"
- }
+ 
+    PATH = "C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\bin;${env.PATH}"
+}
       docker.build("simran-khurana/DevOpsTraining")
 		
     }
