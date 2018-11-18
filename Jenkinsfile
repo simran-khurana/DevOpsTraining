@@ -10,11 +10,8 @@ node {
     stage('Build image new') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
- environment {
  
-    PATH = "C:\\Program Files\\Git\\usr\\bin"
-}
-      docker.build("simran-khurana/DevOpsTraining")
+      app = docker.build("simran-khurana/DevOpsTraining")
 		
     }
 	  
