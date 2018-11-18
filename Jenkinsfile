@@ -12,7 +12,7 @@ node {
          * docker build on the command line */
  environment {
  
-    PATH = "C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\bin;${env.PATH}"
+    PATH = "C:\\Program Files\\Git\\usr\\bin"
 }
       docker.build("simran-khurana/DevOpsTraining")
 		
