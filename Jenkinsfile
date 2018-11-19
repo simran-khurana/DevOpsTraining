@@ -6,7 +6,7 @@
   }
   agent any
   stages {
-    stage(‘Cloning Git’) {
+    stage(‘Cloning repo’) {
         checkout scm
     }
     stage(‘Building image’) {
