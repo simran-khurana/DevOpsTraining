@@ -1,31 +1,31 @@
-node {
-    def app
-
-    stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
-
-        checkout scm
+pipeline {
+  environment {
+    registry = “simrandockerhub/dashboard”
+    registryCredential = ‘simrandockerhub’
+    dockerImage = ‘’
+  }
+  agent any
+  stages {
+    stage(‘Cloning Git’) {
+      steps {
+        git ‘https://github.com/simran-khurana/DevOpsTraining.git'
+      }
     }
-
-    stage('Build image new') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
- 
-      app = docker.build("simran-khurana/DevOpsTraining")
-		
-    }
-	  
-
-   
-
-    stage('Push image') {
-        /* Finally, we'll push the image with two tags:
-         * First, the incremental build number from Jenkins
-         * Second, the 'latest' tag.
-         * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+    stage(‘Building image’) {
+      steps{
+        script {
+          dockerImage = docker.build registry + “:$BUILD_NUMBER”
         }
+      }
     }
-	}
+    stage(‘Deploy Image’) {
+      steps{
+        script {
+          docker.withRegistry( ‘’, registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+  }
+}
