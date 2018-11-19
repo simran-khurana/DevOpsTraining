@@ -10,15 +10,15 @@
         checkout scm
     }
 	  stage('Build') {
-       steps {
+   
          sh 'npm install'
          sh 'npm run bowerInstall'
-       }
+      
     }
     stage('Test') {
-      steps {
+   
         sh 'npm test'
-      }
+      
     }
     stage('Building image') {
      
