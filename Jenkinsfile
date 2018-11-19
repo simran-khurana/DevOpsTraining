@@ -5,7 +5,7 @@
     dockerImage = ''
   }
  
-  stages {
+ 
     stage('Cloning repo') {
         checkout scm
     }
@@ -24,6 +24,6 @@
           }
         
       }
-    }
+    
   }
 }
