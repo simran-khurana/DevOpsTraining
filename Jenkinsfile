@@ -1,4 +1,4 @@
-pipeline {
+	node {
   environment {
     registry = “simrandockerhub/dashboard”
     registryCredential = ‘simrandockerhub’
@@ -8,7 +8,8 @@ pipeline {
   stages {
     stage(‘Cloning Git’) {
       steps {
-        git ‘https://github.com/simran-khurana/DevOpsTraining.git'
+      
+        checkout scm
       }
     }
     stage(‘Building image’) {
