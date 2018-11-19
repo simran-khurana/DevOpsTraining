@@ -4,7 +4,7 @@
     registryCredential = 'simrandockerhub'
     dockerImage = ''
   }
-  agent any
+ 
   stages {
     stage('Cloning repo') {
         checkout scm
