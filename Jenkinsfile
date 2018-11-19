@@ -3,7 +3,7 @@
     registry = "simrandockerhub/dashboard"
     registryCredential = 'simrandockerhub'
     dockerImage = ''
-	  PATH = "C:\Program Files\Git\usr\bin"
+	 PATH = "C:\\Program Files\\Git\\usr\\bin"
   }
 
   
