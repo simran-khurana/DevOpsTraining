@@ -1,4 +1,4 @@
-		pipeline {
+	node {
   environment {
     registry = "simrandockerhub/dashboard"
     registryCredential = 'simrandockerhub'
@@ -11,17 +11,7 @@
     stage('Cloning repo') {
         checkout scm
     }
-	  stage('Build') {
-       
-         sh 'npm install'
-         sh 'npm run bowerInstall'
-       
-    }
-    stage('Test') {
-    
-        sh 'npm test'
-      
-    }
+	 
     stage('Building image') {
      
         script {
